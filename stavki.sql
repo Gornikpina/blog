@@ -44,9 +44,22 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Komentar` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `mydb`.`Clanek`
--- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Kategorije` (
+  `idKategorije` INT NOT NULL AUTO_INCREMENT,
+  `naziv` VARCHAR(45) NOT NULL,
+  `Clanek_idClanek` INT NOT NULL,
+  `Clanek_Uporabnik_idUporabnik` INT NOT NULL,
+  PRIMARY KEY (`idKategorije`,  `Clanek_Uporabnik_idUporabnik`),
+  INDEX `fk_Kategorije_Clanek1_idx` (`Clanek_Uporabnik_idUporabnik` ASC),
+  CONSTRAINT `fk_Kategorije_Clanek1`
+    FOREIGN KEY ( `Clanek_Uporabnik_idUporabnik`)
+    REFERENCES `mydb`.`Clanek` (`Uporabnik_idUporabnik`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 CREATE TABLE IF NOT EXISTS `mydb`.`Clanek` (
   `idClanek` INT NOT NULL AUTO_INCREMENT,
   `naziv` VARCHAR(45) NOT NULL,
@@ -55,9 +68,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Clanek` (
   `datum` DATETIME NOT NULL,
   `Uporabnik_idUporabnik` INT NOT NULL,
   `Komentar_idKomentar` INT NOT NULL,
-  PRIMARY KEY (`idClanek`, `Uporabnik_idUporabnik`, `Komentar_idKomentar`),
+    `Kategorije_idKategorije` INT NOT NULL,
+  PRIMARY KEY (`idClanek`, `Uporabnik_idUporabnik`, `Komentar_idKomentar`,`Kategorije_idKategorije` ),
   INDEX `fk_Clanek_Uporabnik_idx` (`Uporabnik_idUporabnik` ASC),
   INDEX `fk_Clanek_Komentar1_idx` (`Komentar_idKomentar` ASC),
+    INDEX `fk_Clanek_Kategorije_idx` (`Kategorije_idKategorije` ASC),
   CONSTRAINT `fk_Clanek_Uporabnik`
     FOREIGN KEY (`Uporabnik_idUporabnik`)
     REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
@@ -67,26 +82,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Clanek` (
     FOREIGN KEY (`Komentar_idKomentar`)
     REFERENCES `mydb`.`Komentar` (`idKomentar`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Kategorije`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Kategorije` (
-  `idKategorije` INT NOT NULL AUTO_INCREMENT,
-  `naziv` VARCHAR(45) NOT NULL,
-  `Clanek_idClanek` INT NOT NULL,
-  `Clanek_Uporabnik_idUporabnik` INT NOT NULL,
-  PRIMARY KEY (`idKategorije`, `Clanek_idClanek`, `Clanek_Uporabnik_idUporabnik`),
-  INDEX `fk_Kategorije_Clanek1_idx` (`Clanek_idClanek` ASC, `Clanek_Uporabnik_idUporabnik` ASC),
-  CONSTRAINT `fk_Kategorije_Clanek1`
-    FOREIGN KEY (`Clanek_idClanek` , `Clanek_Uporabnik_idUporabnik`)
-    REFERENCES `mydb`.`Clanek` (`idClanek` , `Uporabnik_idUporabnik`)
+    ON UPDATE NO ACTION,
+      CONSTRAINT `fk_Clanek_Kategorije`
+    FOREIGN KEY (`Kategorije_idKategorije`)
+    REFERENCES `mydb`.`Kategorije` (`idKategorije`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
