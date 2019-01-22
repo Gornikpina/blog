@@ -18,7 +18,7 @@ session_start();?>
 
       <?php $naziv= $row['naziv'] ?>
 <?php $_SESSION['naziv']=$naziv;?>
-  <li class="stranskiLi"><a href="prikazClankov.php?<?php echo $_SESSION['naziv'] ?>"> <?php echo $row['naziv']?></a></li>
+  <li class="stranskiLi"><a href="<?php echo $_SESSION['naziv'] ?>.php"> <?php echo $row['naziv']?></a></li>
 
 
 

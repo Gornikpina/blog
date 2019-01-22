@@ -20,7 +20,7 @@
     text-decoration: none;
   }
 
-  
+
   </style>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -34,9 +34,7 @@
     <li class="nav-item">
       <a href="domov.php" class="nav-link" >Domov</a>
     </li>
-    <li class="nav-item">
-      <a  href="seznam.php" class="nav-link">Seznam restavracij</a>
-    </li>
+    
   </ul>
 
 </nav>
