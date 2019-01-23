@@ -54,9 +54,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Kategorije` (
   `idKategorije` INT NOT NULL AUTO_INCREMENT,
-  `naziv` VARCHAR(45) NOT NULL,
-  `Clanek_idClanek` INT NOT NULL,
-  `Clanek_Uporabnik_idUporabnik` INT NOT NULL,
+  `naziv` enum('humor','umetnost','zdravje','novice') COLLATE utf8_slovenian_ci NOT NULL,
   PRIMARY KEY (`idKategorije`,  `Clanek_Uporabnik_idUporabnik`)
   )
 ENGINE = InnoDB;
