@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Komentar` (
   `vsebina` TEXT(100) NOT NULL,
   `cas` DATETIME NOT NULL,
   `Uporabnik_idUporabnik` INT NOT NULL,
+  `Clanek_idClanek` INT NOT NULL,
   PRIMARY KEY (`idKomentar`, `Uporabnik_idUporabnik`),
   INDEX `fk_Komentar_Uporabnik1_idx` (`Uporabnik_idUporabnik` ASC),
   INDEX `fk_Komentar_Clanek_idx` (`Clanek_idClanek` ASC),
@@ -47,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Komentar` (
     FOREIGN KEY (`Clanek_idClanek`)
     REFERENCES `mydb`.`Clanek` (`idClanek`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,)
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
