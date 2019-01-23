@@ -1,0 +1,119 @@
+.stranskiUl {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+.stranskiLi {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+
+/*kostumizacija footerja*/
+.footer-stil{
+  background-color: #F8F8F8;
+  padding-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-hr{
+  width:50%;
+}
+
+.o_nas{
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/*mapa*/
+.mapouter{
+  text-align:right;
+  height:150px;
+  width:150px;
+}
+
+.gmap_canvas {
+  overflow:hidden;
+  background:none!important;
+  height:250px;
+  width:250px;
+  padding-bottom: 20px;
+  margin-bottom:20px;
+}
+
+/*vpis in registracija*/
+.slika-vpis
+{
+  height: 100%;
+  width: 100%;
+}
+
+/*  vpis  in registracija   */
+.card {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+/* vsi clanki */
+.gallery-block{
+	padding-bottom: 60px;
+	padding-top: 60px;
+}
+
+.gallery-block .heading{
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.gallery-block .heading h2{
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.gallery-block.cards-gallery h6 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.gallery-block.cards-gallery .card{
+  transition: 0.4s ease;
+}
+
+.gallery-block.cards-gallery .card img {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-block.cards-gallery .card-body {
+  text-align: center;
+}
+
+.gallery-block.cards-gallery .card-body p {
+  font-size: 15px;
+}
+
+.gallery-block.cards-gallery a {
+  color: #212529;
+}
+
+.gallery-block.cards-gallery a:hover {
+  text-decoration: none;
+}
+
+.gallery-block.cards-gallery .card {
+  margin-bottom: 30px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 576px) {
+
+	.gallery-block .transform-on-hover:hover {
+	    transform: translateY(-10px) scale(1.02);
+	    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
+	}
+}
