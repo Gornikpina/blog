@@ -18,18 +18,16 @@ include 'header.php';
                 {
                   mysqli_stmt_execute($stmt);
                   $result = mysqli_stmt_get_result($stmt);
-
+                  //echo '<td>' . '<a href="movie.php?id='. urlencode($id) . '" target="_blank">'.$title.'</a>' . '</td>';
                   while ($row = mysqli_fetch_assoc($result))
                   {
+                    $idClanka = $row["idClanek"];
                     echo
                     '<div class="col-md-6 col-lg-4">
                       <div class="card border-0 transform-on-hover">
                         <a class="lightbox" href=""><img src="slike/slike_clankov/'.$row["nazivSlike"].'" alt="Card Image" class="card-img-top"></a>
     	                  <div class="card-body">
-    	                   <h6><a href="#">'.$row["naziv"].'</a></h6>
-    	                   '.$row["datum"].'
-                         <br>
-                         '.$row["vsebina"] .'
+    	                   <h6><a href="clanek.php?id='.urlencode($idClanka).'" target="_blank">'.$row["naziv"].'</a></h6>
                          <br>
                          '.$row["kategorija"].'</p>
     	                  </div>
@@ -37,12 +35,7 @@ include 'header.php';
                     </div>';
                   }
                 }
-                $timezone  = date_default_timezone_set("Europe/Ljubljana");
-                $datum = date("d-m-Y h:i");
-                echo "Datum ". $datum;
-
-                ?>
-
+               ?>
 	        </div>
 	    </div>
     </section>
