@@ -18,7 +18,9 @@ if (isset($_POST["submit"]))
         VALUES ('$geslo1', '$email')";
         $r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 
-        $sid=$_SESSION['id_uporabnika']=$email;
+        //$_SESSION['id_uporabnika']=$email;
+
+        //$sid=
         //    header('Location: domov.php');
         header("Location: ../vpis.php?signup=success");
         exit();
