@@ -37,13 +37,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Komentar` (
   `Uporabnik_idUporabnik` INT NOT NULL,
   PRIMARY KEY (`idKomentar`, `Uporabnik_idUporabnik`),
   INDEX `fk_Komentar_Uporabnik1_idx` (`Uporabnik_idUporabnik` ASC),
+  INDEX `fk_Komentar_Clanek_idx` (`Clanek_idClanek` ASC),
   CONSTRAINT `fk_Komentar_Uporabnik1`
     FOREIGN KEY (`Uporabnik_idUporabnik`)
     REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Komentar_Clanek`
+    FOREIGN KEY (`Clanek_idClanek`)
+    REFERENCES `mydb`.`Clanek` (`idClanek`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,)
 ENGINE = InnoDB;
-
 
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Kategorije` (
@@ -51,15 +56,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Kategorije` (
   `naziv` VARCHAR(45) NOT NULL,
   `Clanek_idClanek` INT NOT NULL,
   `Clanek_Uporabnik_idUporabnik` INT NOT NULL,
-  PRIMARY KEY (`idKategorije`,  `Clanek_Uporabnik_idUporabnik`),
-  INDEX `fk_Kategorije_Clanek1_idx` (`Clanek_Uporabnik_idUporabnik` ASC),
-  CONSTRAINT `fk_Kategorije_Clanek1`
-    FOREIGN KEY ( `Clanek_Uporabnik_idUporabnik`)
-    REFERENCES `mydb`.`Clanek` (`Uporabnik_idUporabnik`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`idKategorije`,  `Clanek_Uporabnik_idUporabnik`)
+  )
 ENGINE = InnoDB;
-
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Clanek` (
   `idClanek` INT NOT NULL AUTO_INCREMENT,
@@ -72,16 +71,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Clanek` (
     `Kategorije_idKategorije` INT NOT NULL,
   PRIMARY KEY (`idClanek`, `Uporabnik_idUporabnik`, `Komentar_idKomentar`,`Kategorije_idKategorije` ),
   INDEX `fk_Clanek_Uporabnik_idx` (`Uporabnik_idUporabnik` ASC),
-  INDEX `fk_Clanek_Komentar1_idx` (`Komentar_idKomentar` ASC),
-    INDEX `fk_Clanek_Kategorije_idx` (`Kategorije_idKategorije` ASC),
+  INDEX `fk_Clanek_Kategorije_idx` (`Kategorije_idKategorije` ASC),
   CONSTRAINT `fk_Clanek_Uporabnik`
     FOREIGN KEY (`Uporabnik_idUporabnik`)
     REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Clanek_Komentar1`
-    FOREIGN KEY (`Komentar_idKomentar`)
-    REFERENCES `mydb`.`Komentar` (`idKomentar`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
       CONSTRAINT `fk_Clanek_Kategorije`
