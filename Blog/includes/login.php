@@ -8,14 +8,16 @@ if (isset($_POST["user"]) && isset($_POST["pass"]))
     $pass = md5($_POST['pass']);
 
 	// preverjanje veljavnosti upor. imena in gesla
-    $q = "SELECT * FROM Uporabnik WHERE email='$user' AND geslo='$pass' ";
+    $q = "SELECT * FROM Uporabnik WHERE email='$user' AND geslo='$pass';";
     $r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 
-    $st_vrstic = mysqli_num_rows($r);
-  	if($st_vrstic > 0){
+  	if(mysqli_num_rows($r) == 1){
+      $row = mysqli_fetch_assoc($r);
+      $id = $row['idUporabnik'];
 
       session_start();
-      $sid=$_SESSION['id_uporabnika']=$user;
+      $_SESSION['id_uporabnika']=$id;
+      //$sid=$_SESSION['id_uporabnika']=$user;
       header('Location: ../domov.php');
     }
     else
