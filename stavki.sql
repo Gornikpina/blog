@@ -33,6 +33,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Komentar` (
   `idKomentar` INT NOT NULL AUTO_INCREMENT,
   `vsebina` TEXT(100) NOT NULL,
+  `cas` DATETIME NOT NULL,
   `Uporabnik_idUporabnik` INT NOT NULL,
   PRIMARY KEY (`idKomentar`, `Uporabnik_idUporabnik`),
   INDEX `fk_Komentar_Uporabnik1_idx` (`Uporabnik_idUporabnik` ASC),
