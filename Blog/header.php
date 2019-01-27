@@ -56,16 +56,16 @@ session_start();
             <a class="nav-link" href="domov.php">Domov<span class="sr-only">(current)</span></a>
             </li>';
             echo '<li class="nav-item">
-              <a class="nav-link" href="humor.php">Humor</a>
+              <a class="nav-link" href="Humor.php">Humor</a>
               </li>';
             echo '<li class="nav-item">
-              <a class="nav-link" href="novice.php">Novice</a>
+              <a class="nav-link" href="Novice.php">Novice</a>
               </li>';
             echo '<li class="nav-item">
-              <a class="nav-link" href="umetnost.php">Umetnost</a>
+              <a class="nav-link" href="Umetnost.php">Umetnost</a>
               </li>';
             echo '<li class="nav-item">
-              <a class="nav-link" href="zdravje.php">Zdravje</a>
+              <a class="nav-link" href="Zdravje.php">Zdravje</a>
               </li>';
       }
       ?>
